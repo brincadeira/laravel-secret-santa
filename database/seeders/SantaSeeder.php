@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Santa;
 use Faker\Factory as Faker;
 
 class SantaSeeder extends Seeder
@@ -17,7 +17,7 @@ class SantaSeeder extends Seeder
     {
         $faker = Faker::create();
         for ($i=1; $i<51; $i++) {
-            DB::table('santas')->insert([
+            Santa::create([
                 'id' => $i,
                 'name' => $faker->name,
             ]);

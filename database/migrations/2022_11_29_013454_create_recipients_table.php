@@ -15,7 +15,8 @@ class CreateRecipientsTable extends Migration
     {
         Schema::create('recipients', function (Blueprint $table) {
             $table->id();
-            $table->integer('recipient_id');
+            $table->unsignedBigInteger('santa_id');
+            $table->foreign('santa_id')->references('id')->on('santas');
         });
     }
 

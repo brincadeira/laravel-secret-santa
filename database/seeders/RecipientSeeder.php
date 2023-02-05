@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Recipient;
 
 class RecipientSeeder extends Seeder
 {
@@ -18,15 +18,15 @@ class RecipientSeeder extends Seeder
 
         for ($i=1; $i<51; $i++) {
             do{
-                $recipient_id = array_rand($rangeArray);
-            } while ($i===$recipient_id);
+                $santa_id = array_rand($rangeArray);
+            } while ($i===$santa_id);
 
-            DB::table('recipients')->insert([
+            Recipient::create([
                 'id' => $i,
-                'recipient_id' => $recipient_id,
+                'santa_id' => $santa_id,
             ]);
             
-            unset($rangeArray[$recipient_id]);
+            unset($rangeArray[$santa_id]);
         }
     }
 }

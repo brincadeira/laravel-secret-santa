@@ -10,9 +10,9 @@ class ApiController extends Controller
 {
     public function getSanta($id) {
         if (Santa::where('id', $id)->exists()) {
-            $santa = Santa::where('id', $id)->get();
-            $recipientId = Recipient::where('id', $id)->pluck('recipient_id');
-            $recipient = Santa::where('id', $recipientId)->get();
+            $santa = Santa::find($id);
+            $recipientId = $santa->recipient()->first();
+            $recipient = $recipientId->santa()->first();
             return response()->json([
                 "santa" => $santa,
                 "recipient" => $recipient
